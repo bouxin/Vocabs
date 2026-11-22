@@ -7,6 +7,7 @@ import { highlight } from '../lib/highlight'
 import { cloze, spoken } from '../lib/phrase'
 import { Speaker } from './Speaker'
 import { CardMeta } from './CardMeta'
+import { ipaOf } from '../lib/ipa'
 import { speak, stopSpeaking } from '../lib/speech'
 
 interface Props {
@@ -112,6 +113,7 @@ export function StudyView({ store, onDone }: Props) {
   const prog = state.progress[card.id] ?? newProgress(card.id)
   const isNew = prog.stage === 'new'
   const gap = card.meaning ? null : cloze(card.term)
+  const ipa = ipaOf(card.term)
 
   return (
     <div className="study">
@@ -151,6 +153,7 @@ export function StudyView({ store, onDone }: Props) {
         ) : (
           <>
             <div className={`term${card.term.length > 22 ? ' small' : ''}`}>{card.term}</div>
+            {ipa ? <div className="ipa">/{ipa}/</div> : null}
             {card.pattern ? <div className="pattern">{card.pattern}</div> : null}
             <Speaker
               text={spoken(card.term)}

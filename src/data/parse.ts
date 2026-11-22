@@ -69,6 +69,19 @@ export function parseAfl(raw: string): AflEntry[] {
   })
 }
 
+export function parseIpa(raw: string): Record<string, string> {
+  const out: Record<string, string> = {}
+  for (const line of raw.split('\n')) {
+    const text = line.trim()
+    if (!text || text.startsWith('#')) continue
+    const parts = text.split('|').map((p) => p.trim())
+    if (parts.length >= 2) {
+      out[parts[0]] = parts[1]
+    }
+  }
+  return out
+}
+
 export function parseNotes(raw: string): NoteEntry[] {
   return rows(raw, 4).map(([deck, term, pattern, meaning, ...examples]) => ({
     deck: deck as DeckId,

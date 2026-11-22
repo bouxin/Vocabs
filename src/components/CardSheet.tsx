@@ -2,6 +2,7 @@ import type { Card, CardProgress, Settings } from '../lib/types'
 import { formatInterval, isMature } from '../lib/srs'
 import { highlight } from '../lib/highlight'
 import { spoken } from '../lib/phrase'
+import { ipaOf } from '../lib/ipa'
 import { Speaker } from './Speaker'
 import { CardMeta } from './CardMeta'
 
@@ -13,6 +14,7 @@ interface Props {
 }
 
 export function CardSheet({ card, progress, settings, onClose }: Props) {
+  const ipa = ipaOf(card.term)
   const stage =
     !progress || progress.stage === 'new'
       ? 'Not started'
@@ -35,6 +37,7 @@ export function CardSheet({ card, progress, settings, onClose }: Props) {
           <span className="faint">{stage}</span>
         </div>
         <h2 style={{ margin: '12px 0 2px', fontSize: 24, letterSpacing: '-0.02em' }}>{card.term}</h2>
+        {ipa ? <div className="ipa">/{ipa}/</div> : null}
         {card.pattern ? <div className="pattern">{card.pattern}</div> : null}
         <div style={{ display: 'flex', justifyContent: 'center', margin: '14px 0' }}>
           <Speaker text={spoken(card.term)} settings={settings} variant="big" />
