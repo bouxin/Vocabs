@@ -23,6 +23,9 @@ TypeScript + React + Vite. No backend, no account, no network calls at runtime.
   audio and its list data.
 - **Audio** — Web Speech API pronunciation of the phrase and of each example sentence.
   Voice and speed are selectable; it works offline once the device voice is installed.
+- **IPA** — every card shows a General American transcription under the headword, with
+  stress marks, schwa and weak forms: `/ˈkɑɡnɪtɪv əˈbɪləti/`. Generated from the CMU
+  Pronouncing Dictionary by `scripts/build-ipa.py`.
 - **Progress** — remembered / mature / learning / not-started counts, per-deck progress,
   daily streak, 14-day activity, recall accuracy. Stored in `localStorage`, with JSON
   backup and restore in Settings.

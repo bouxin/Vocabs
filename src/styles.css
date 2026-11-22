@@ -479,6 +479,17 @@ button {
   text-transform: uppercase;
 }
 
+/* IPA transcription under the headword: /ˈkɑɡnɪtɪv əˈbɪləti/ */
+.ipa {
+  font-family: 'Charis SIL', 'Doulos SIL', 'Gentium Plus', 'Lucida Sans Unicode',
+    'Arial Unicode MS', system-ui, sans-serif;
+  font-size: 17px;
+  line-height: 1.4;
+  letter-spacing: 0.02em;
+  color: var(--muted);
+  font-weight: 400;
+}
+
 .speak-btn {
   align-self: center;
   width: 52px;

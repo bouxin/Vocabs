@@ -8,5 +8,9 @@ dist-artifact
 # Incremental TypeScript build state
 tsconfig.tsbuildinfo
 
+# CMU dictionary cache used by scripts/build-ipa.py (downloaded on first run)
+scripts/.cache
+__pycache__
+
 .DS_Store
 *.local
